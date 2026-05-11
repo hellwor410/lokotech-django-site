@@ -1,0 +1,21 @@
+{
+    "builds": [
+        {
+            "src": "manage.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "scripts": {
+        "postinstall": "bash build_files.sh"
+    },
+    "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/staticfiles/$1"
+        },
+        {
+            "src": ".*",
+            "dest": "manage.py"
+        }
+    ]
+}

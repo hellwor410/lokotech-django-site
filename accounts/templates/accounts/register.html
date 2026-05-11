@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация | ЛокоТех-Сервис{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow">
+            <div class="card-header bg-red text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-user-plus me-2"></i>
+                    Регистрация
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Имя пользователя *</label>
+                        {{ form.username }}
+                        <div class="form-text">Только буквы, цифры и @/./+/-/_</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email *</label>
+                        {{ form.email }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Телефон *</label>
+                        {{ form.phone }}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Предприятие</label>
+                            {{ form.company }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Должность</label>
+                            {{ form.position }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Пароль *</label>
+                        {{ form.password1 }}
+                        <div class="form-text">Минимум 8 символов, не только цифры</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Подтверждение пароля *</label>
+                        {{ form.password2 }}
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-red btn-lg">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Зарегистрироваться
+                        </button>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <p>Уже есть аккаунт? <a href="{% url 'login' %}" class="text-red">Войдите</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

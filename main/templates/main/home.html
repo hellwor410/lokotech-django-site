@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная | ЛокоТех-Сервис{% endblock %}
+
+{% block content %}
+<!-- Герой-секция -->
+<div class="bg-white text-dark p-5 rounded-3 mb-5 border-bottom border-3" style="border-color: #E30613!important;">
+    <div class="row align-items-center">
+        <div class="col-lg-8">
+            <h1 class="display-5 fw-bold" style="color: #E30613;">ЛокоТех-Сервис</h1>
+            <p class="lead text-dark">Ремонт и обслуживание локомотивов</p>
+            <p class="text-secondary">Крупнейшая сервисная компания России. Более 80 депо по всей стране. Входит в Группу Компаний «ЛокоТех».</p>
+        </div>
+        <div class="col-lg-4 text-center">
+            <i class="fas fa-train" style="font-size: 8rem; color: #E30613; opacity: 0.3;"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Ключевые факты -->
+<h2 class="mb-4 fw-bold">Ключевые факты</h2>
+<div class="row mb-5">
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 text-center p-3 shadow-sm">
+            <div class="card-body">
+                <div class="display-4 fw-bold" style="color: #E30613;">88</div>
+                <p class="text-secondary mb-0">сервисных депо</p>
+                <small class="text-muted">по всей России</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 text-center p-3 shadow-sm">
+            <div class="card-body">
+                <div class="display-4 fw-bold" style="color: #E30613;">5 000+</div>
+                <p class="text-secondary mb-0">квалифицированных</p>
+                <small class="text-muted">сотрудников</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 text-center p-3 shadow-sm">
+            <div class="card-body">
+                <div class="display-4 fw-bold" style="color: #E30613;">17 000+</div>
+                <p class="text-secondary mb-0">устранённых</p>
+                <small class="text-muted">замечаний в 2025</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card h-100 text-center p-3 shadow-sm">
+            <div class="card-body">
+                <div class="display-4 fw-bold" style="color: #E30613;">368</div>
+                <p class="text-secondary mb-0">обученных</p>
+                <small class="text-muted">наставников</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Преимущества и форма -->
+<div class="row">
+    <!-- Левая колонка - преимущества -->
+    <div class="col-lg-5 mb-4">
+        <h2 class="mb-4 fw-bold">Наши преимущества</h2>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card h-100 p-3 advantage-card">
+                    <div class="card-body">
+                        <div class="advantage-number">01</div>
+                        <p class="mb-0">Крупнейшая российская компания в сфере сервисного обслуживания локомотивов</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card h-100 p-3 advantage-card">
+                    <div class="card-body">
+                        <div class="advantage-number">02</div>
+                        <p class="mb-0">88 сервисных депо по всей России</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card h-100 p-3 advantage-card">
+                    <div class="card-body">
+                        <div class="advantage-number">03</div>
+                        <p class="mb-0">Обслуживаем локомотивы ОАО «РЖД» и других операторов</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card h-100 p-3 advantage-card">
+                    <div class="card-body">
+                        <div class="advantage-number">04</div>
+                        <p class="mb-0">Полный цикл ремонта: от диагностики до модернизации</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статистика заявок -->
+        <div class="card bg-light mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Статистика заявок</h5>
+                <div class="row text-center">
+                    <div class="col-6">
+                        <div class="stat-number">{{ total_requests|default:"0" }}</div>
+                        <div class="stat-label">Всего заявок</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-number">{{ completed_requests|default:"0" }}</div>
+                        <div class="stat-label">Выполнено</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Правая колонка - форма заявки или призыв к регистрации -->
+    <div class="col-lg-7" id="request-form">
+        {% if user.is_authenticated %}
+            <!-- Форма для авторизованных пользователей -->
+            <div class="card shadow">
+                <div class="card-header bg-red text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-clipboard-list me-2"></i>
+                        Заявка на ремонт локомотива
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <!-- Контактные данные (автозаполнение из профиля) -->
+                        <div class="mb-4">
+                            <h5 class="border-bottom pb-2">Контактные данные</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">ФИО *</label>
+                                    <input type="text" class="form-control" name="full_name"
+                                           value="{{ user.get_full_name|default:user.username }}" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Телефон *</label>
+                                    <input type="text" class="form-control" name="phone"
+                                           value="{{ user.phone }}" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email"
+                                           value="{{ user.email }}">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Предприятие *</label>
+                                    <input type="text" class="form-control" name="company"
+                                           value="{{ user.company }}" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Данные локомотива -->
+                        <div class="mb-4">
+                            <h5 class="border-bottom pb-2">Данные локомотива</h5>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Тип *</label>
+                                    <select class="form-select" name="locomotive_type" required>
+                                        <option value="electric">Электровоз</option>
+                                        <option value="diesel">Тепловоз</option>
+                                        <option value="shunter">Маневровый</option>
+                                        <option value="passenger">Пассажирский</option>
+                                        <option value="freight">Грузовой</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Модель *</label>
+                                    <input type="text" class="form-control" name="locomotive_model"
+                                           placeholder="2ЭС6, ТЭМ18ДМ" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Номер *</label>
+                                    <input type="text" class="form-control" name="locomotive_number"
+                                           placeholder="001" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Информация о ремонте -->
+                        <div class="mb-4">
+                            <h5 class="border-bottom pb-2">Информация о ремонте</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Вид ремонта *</label>
+                                    <select class="form-select" name="repair_type" required>
+                                        <option value="diagnostics">Техническая диагностика</option>
+                                        <option value="maintenance">Техобслуживание</option>
+                                        <option value="current">Текущий ремонт</option>
+                                        <option value="medium">Средний ремонт</option>
+                                        <option value="capital">Капитальный ремонт</option>
+                                        <option value="emergency">Аварийный ремонт</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Описание проблемы *</label>
+                                    <textarea class="form-control" name="problem_description" rows="4"
+                                              placeholder="Подробно опишите проблему..." required></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Срочность -->
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="urgent" id="urgent">
+                                <label class="form-check-label" for="urgent">
+                                    Срочная заявка <span class="text-red">(приоритетная обработка)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Кнопка отправки -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-red btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>
+                                Отправить заявку
+                            </button>
+                        </div>
+
+                        <p class="text-muted small text-center mt-3">
+                            <span class="text-red">*</span> - обязательные поля
+                        </p>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <!-- Блок для неавторизованных пользователей -->
+            <div class="card shadow text-center p-5">
+                <i class="fas fa-lock fa-4x text-red mb-3"></i>
+                <h4>Доступ к форме заявки ограничен</h4>
+                <p class="text-muted">Чтобы оставить заявку на ремонт, необходимо войти в систему или зарегистрироваться.</p>
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                    <a href="{% url 'login' %}" class="btn btn-red">
+                        <i class="fas fa-sign-in-alt me-2"></i>Войти
+                    </a>
+                    <a href="{% url 'register' %}" class="btn btn-outline-red">
+                        <i class="fas fa-user-plus me-2"></i>Зарегистрироваться
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

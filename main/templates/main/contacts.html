@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты | ЛокоТех-Сервис{% endblock %}
+
+{% block content %}
+<!-- Заголовок -->
+<div class="bg-white text-dark p-5 rounded-3 mb-5 border-bottom border-3" style="border-color: #E30613!important;">
+    <h1 class="display-5 fw-bold" style="color: #E30613;">Контакты</h1>
+    <div class="separator"></div>
+    <p class="lead">Свяжитесь с нами любым удобным способом</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-red text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3 class="ms-3 mb-0">Телефоны</h3>
+                </div>
+
+                <p class="mb-2"><strong>/</strong> +7 (499) 638 2298</p>
+                <p class="mb-0"><strong>/</strong> +7 (800) 600 06691</p>
+                <p class="text-muted small mt-3">Круглосуточно, без выходных</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-red text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="ms-3 mb-0">Email</h3>
+                </div>
+                <p class="mb-2"><strong>Общие вопросы:</strong> info@lokotech.ru</p>
+                <p class="mb-2"><strong>Заявки на ремонт:</strong> service@lokotech.ru</p>
+                <p class="mb-0"><strong>Для партнёров:</strong> partners@lokotech.ru</p>
+                <p class="text-muted small mt-3">Ответ в течение 2 часов</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-red text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="ms-3 mb-0">Адреса</h3>
+                </div>
+                <p class="mb-3"><strong>Головной офис:</strong><br>109004, г. Москва,
+ул. Земляной вал, д. 59, стр. 2</p>
+                <p class="mb-0"><strong>Депо в Ружино:</strong><br>692042, г.Лесозаводск, ул. Пионерская, 1а, </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-red text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="ms-3 mb-0">Режим работы</h3>
+                </div>
+                <p class="mb-2"><strong>Диспетчерская служба:</strong> 24/7</p>
+                <p class="mb-2"><strong>Офис:</strong> пн-пт 8:00 - 17:00</p>
+                <p class="mb-0"><strong>Приём заявок через сайт:</strong> круглосуточно</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

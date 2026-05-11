@@ -1,0 +1,196 @@
+/* ============================================
+   СТИЛЬ "ЛОКОТЕХ" - ТОЛЬКО ДОПОЛНИТЕЛЬНЫЕ СТИЛИ
+============================================ */
+
+:root {
+    --primary-red: #E30613;
+    --dark-gray: #1A1A1A;
+    --medium-gray: #4A4A4A;
+    --light-gray: #F8F9FA;
+    --white: #FFFFFF;
+    --border-color: #E5E5E5;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: var(--white);
+    color: var(--dark-gray);
+}
+
+/* Навигация */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand::before {
+    content: "●";
+    color: var(--primary-red);
+    font-size: 2rem;
+    margin-right: 0.5rem;
+    line-height: 1;
+}
+
+.nav-link.active {
+    border-bottom: 2px solid var(--primary-red);
+}
+
+/* Цвета */
+.text-red {
+    color: var(--primary-red) !important;
+}
+
+.bg-red {
+    background-color: var(--primary-red) !important;
+}
+
+.border-red {
+    border-color: var(--primary-red) !important;
+}
+
+/* Кнопка ЛокоТех */
+.btn-lokotech {
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.btn-lokotech:hover {
+    background-color: #b00000;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(227, 6, 19, 0.2);
+}
+
+/* Карточки преимуществ */
+.advantage-card {
+    border-left: 4px solid var(--primary-red);
+}
+
+.advantage-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+/* Статистика */
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Разделитель */
+.separator {
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-red);
+    margin: 1.5rem 0;
+}
+
+/* Футер */
+footer {
+    background-color: var(--dark-gray);
+    color: rgba(255,255,255,0.8);
+}
+
+footer h5 {
+    color: white;
+    font-weight: 600;
+}
+
+footer a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--primary-red);
+}
+
+.footer-logo::before {
+    content: "●";
+    color: var(--primary-red);
+    font-size: 2rem;
+    margin-right: 0.5rem;
+}
+
+.pagination {
+    margin-top: 1rem;
+}
+
+.pagination .page-link {
+    color: #1A1A1A;
+    border: 1px solid #E5E5E5;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.3s;
+}
+
+.pagination .page-link:hover {
+    background-color: #E30613;
+    color: white;
+    border-color: #E30613;
+}
+
+.pagination .active .page-link {
+    background-color: #E30613;
+    border-color: #E30613;
+    color: white;
+}
+
+.pagination .disabled .page-link {
+    color: #999;
+    background-color: #F5F5F5;
+}
+
+/* Стили для кнопок фильтров */
+.btn-outline-red {
+    background-color: transparent;
+    color: #E30613;
+    border: 1px solid #E30613;
+}
+
+.btn-outline-red:hover {
+    background-color: #E30613;
+    color: white;
+}
+
+.btn-red {
+    background-color: #E30613;
+    color: white;
+    border: 1px solid #E30613;
+}
+
+.btn-red:hover {
+    background-color: #b00000;
+    color: white;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .pagination .page-link {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
