@@ -5,9 +5,6 @@
             "use": "@vercel/python"
         }
     ],
-    "scripts": {
-        "postinstall": "bash build_files.sh"
-    },
     "routes": [
         {
             "src": "/static/(.*)",
