@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="text-danger">ЛокоТех-Сервис</h1>
+<h2>Заявка на ремонт</h2>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Отправить</button>
+    <div class="mb-3">
+        <label>Ваше имя</label>
+        <input type="text" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Телефон</label>
+        <input type="text" name="phone" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Описание проблемы</label>
+        <textarea name="problem" class="form-control" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-danger">Отправить заявку</button>
 </form>
 {% endblock %}
