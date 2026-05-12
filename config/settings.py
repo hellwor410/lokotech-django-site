@@ -34,14 +34,16 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'config.urls'
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# === PostgreSQL через Neon ===
-# ВСТАВЬТЕ СВОЮ СТРОКУ ИЗ NEON В ПЕРЕМЕННУЮ DATABASE_URL НА VERCEL
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL', ''),
-        conn_max_age=600,
-        conn_health_checks=True
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'neondb',
+        'USER': 'neondb_owner',
+        'PASSWORD': 'npg_LJSmjB6bGfF7',
+        'HOST': 'ep-curly-hat-al5vyzsn-pooler.c-3.eu-central-1.aws.neon.tech',
+        'PORT': '5432',
+    }
 }
 
 TEMPLATES = [
