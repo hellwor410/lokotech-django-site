@@ -1,14 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from .forms import RepairRequestForm
+from .models import RepairRequest
 
 def home(request):
-    return HttpResponse("""
-        <h1 style="color:#E30613;">ЛокоТех-Сервис</h1>
-        <p>Сайт восстановлен. Следующий шаг — форма заявок.</p>
-    """)
-
-def about(request):
-    return HttpResponse("<h1>О компании</h1><p>ЛокоТех-Сервис — ремонт локомотивов.</p>")
-
-def contacts(request):
-    return HttpResponse("<h1>Контакты</h1><p>service@lokotech.ru | 8-800-555-ЛОКО</p>")
+    if request.method == 'POST':
+        form = RepairRequestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = RepairRequestForm()
+    return render(request, 'main/home.html', {'form': form})
