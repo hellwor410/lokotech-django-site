@@ -1,6 +1,10 @@
-<h1>ЛокоТех-Сервис</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-danger">ЛокоТех-Сервис</h1>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Отправить заявку</button>
+    <button type="submit" class="btn btn-primary">Отправить</button>
 </form>
+{% endblock %}
