@@ -1,8 +1,11 @@
 import os
 from pathlib import Path
+import dj_database_url
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-test-key-12345'
+
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-fallback-key')
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
@@ -13,11 +16,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'main',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -29,10 +34,14 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'config.urls'
 WSGI_APPLICATION = 'config.wsgi.application'
 
+# === PostgreSQL через Neon ===
+# ВСТАВЬТЕ СВОЮ СТРОКУ ИЗ NEON В ПЕРЕМЕННУЮ DATABASE_URL НА VERCEL
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.dummy',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL', ''),
+        conn_max_age=600,
+        conn_health_checks=True
+    )
 }
 
 TEMPLATES = [
@@ -65,5 +74,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'profile'
+LOGOUT_REDIRECT_URL = 'home'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
