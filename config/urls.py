@@ -1,7 +1,11 @@
-from django.contrib import admin
-from django.urls import path, include
+python
+from django.http import HttpResponse
+from django.urls import path
+
+def home(request):
+    return HttpResponse("✅ Сайт ЛокоТех-Сервис работает!")
 
 urlpatterns = [
+    path('', home),
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),
 ]
