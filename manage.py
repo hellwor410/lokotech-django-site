@@ -16,4 +16,3 @@ if __name__ == '__main__':
     main()
 
 from config.wsgi import app
-os.system("python manage.py migrate")
