@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def home(request):
-    return HttpResponse("Сайт ЛокоТех-Сервис работает! Поздравляю!")
+    return HttpResponse("ЛокоТех-Сервис работает на Vercel!")
 
 def about(request):
-    return HttpResponse("Страница о компании")
+    return HttpResponse("О компании")
 
 def contacts(request):
     return HttpResponse("Контакты")
